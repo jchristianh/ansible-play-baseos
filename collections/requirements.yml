@@ -1,0 +1,6 @@
+---
+collections:
+  - name: jchristianh.basos
+    source: https://github.com/jchristianh-ansible-collections/baseos.git
+    type: git
+    version: main
