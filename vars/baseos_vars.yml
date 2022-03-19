@@ -4,6 +4,7 @@ baseos_include_roles:
   - base_packages
   - resolv_conf
   - update_all_packages
+  - motd
 
 
 ...

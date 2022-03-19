@@ -4,3 +4,10 @@ collections:
     source: https://github.com/jchristianh-ansible-collections/baseos.git
     type: git
     version: main
+
+
+  - name: community.general
+    source: https://galaxy.ansible.com
+
+
+...
