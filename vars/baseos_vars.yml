@@ -1,9 +1,10 @@
 ---
 baseos_include_roles:
-  - etc_hosts
   - base_packages
-  - resolv_conf
   - update_all_packages
+  - etc_hosts
+  - resolv_conf
+  - snmpd_conf
   - motd
 
 
