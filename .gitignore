@@ -1,1 +1,3 @@
 host_vars
+ansible.cfg
+collections/ansible_collections/
