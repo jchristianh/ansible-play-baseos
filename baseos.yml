@@ -1,12 +1,8 @@
 ---
 - name: Deploy a standardized base configuration
   hosts: all
-  become: yes
-  gather_facts: yes
-
-
-  collections:
-    - jchristianh.baseos
+  become: true
+  gather_facts: true
 
 
   vars_files:
@@ -15,7 +11,7 @@
 
   tasks:
     - name: Include relevant role(s)
-      include_role:
+      ansible.builtin.include_role:
         name: "{{ item }}"
       loop: "{{ __baseos_include_roles }}"
 
