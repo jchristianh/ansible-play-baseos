@@ -1,5 +1,0 @@
-centos-test      ansible_host=10.1.1.39 ansible_user=root
-debian-test      ansible_host=10.1.1.43 ansible_user=root
-
-[new]
-fedora-test      ansible_host=10.1.1.79 ansible_user=root
