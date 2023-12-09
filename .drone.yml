@@ -1,0 +1,174 @@
+---
+kind: pipeline
+type: docker
+name: run_ansible_tests_centos9
+
+global-variables:
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/centos9:release-34"
+  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
+  ansible_playbook  : &ansible_playbook  "baseos.yml"
+
+environment:
+  ANSIBLE_INVENTORY    : *ansible_inventory
+  ANSIBLE_PLAYBOOK     : *ansible_playbook
+
+trigger:
+  branch:
+    exclude:
+      - main
+  event: [push]
+
+steps:
+  - name: "ansible_environment_verify"
+    image: *ansible_image
+    commands:
+      - git log -1
+      - ansible --version
+      - ansible-lint --version
+
+  - name: "ansible_galaxy_requirements"
+    image: *ansible_image
+    commands:
+      - ansible-galaxy install -r requirements.yml
+
+  - name: "ansible_lint"
+    image: *ansible_image
+    commands:
+      - ansible-lint --offline
+
+  - name: "ansible_playbook_execution"
+    image: *ansible_image
+    commands:
+      - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
+
+
+---
+kind: pipeline
+type: docker
+name: run_ansible_tests_fedora39
+
+global-variables:
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/fedora39:release-34"
+  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
+  ansible_playbook  : &ansible_playbook  "baseos.yml"
+
+environment:
+  ANSIBLE_INVENTORY    : *ansible_inventory
+  ANSIBLE_PLAYBOOK     : *ansible_playbook
+
+trigger:
+  branch:
+    exclude:
+      - main
+  event: [push]
+
+steps:
+  - name: "ansible_environment_verify"
+    image: *ansible_image
+    commands:
+      - git log -1
+      - ansible --version
+      - ansible-lint --version
+
+  - name: "ansible_galaxy_requirements"
+    image: *ansible_image
+    commands:
+      - ansible-galaxy install -r requirements.yml
+
+  - name: "ansible_lint"
+    image: *ansible_image
+    commands:
+      - ansible-lint --offline
+
+  - name: "ansible_playbook_execution"
+    image: *ansible_image
+    commands:
+      - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
+
+
+---
+kind: pipeline
+type: docker
+name: run_ansible_tests_debian11
+
+global-variables:
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian11:release-34"
+  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
+  ansible_playbook  : &ansible_playbook  "baseos.yml"
+
+environment:
+  ANSIBLE_INVENTORY    : *ansible_inventory
+  ANSIBLE_PLAYBOOK     : *ansible_playbook
+
+trigger:
+  branch:
+    exclude:
+      - main
+  event: [push]
+
+steps:
+  - name: "ansible_environment_verify"
+    image: *ansible_image
+    commands:
+      - git log -1
+      - ansible --version
+      - ansible-lint --version
+
+  - name: "ansible_galaxy_requirements"
+    image: *ansible_image
+    commands:
+      - ansible-galaxy install -r requirements.yml
+
+  - name: "ansible_lint"
+    image: *ansible_image
+    commands:
+      - ansible-lint --offline
+
+  - name: "ansible_playbook_execution"
+    image: *ansible_image
+    commands:
+      - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
+
+
+---
+kind: pipeline
+type: docker
+name: run_ansible_tests_debian12
+
+global-variables:
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian12:release-34"
+  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
+  ansible_playbook  : &ansible_playbook  "baseos.yml"
+
+environment:
+  ANSIBLE_INVENTORY    : *ansible_inventory
+  ANSIBLE_PLAYBOOK     : *ansible_playbook
+
+trigger:
+  branch:
+    exclude:
+      - main
+  event: [push]
+
+steps:
+  - name: "ansible_environment_verify"
+    image: *ansible_image
+    commands:
+      - git log -1
+      - ansible --version
+      - ansible-lint --version
+
+  - name: "ansible_galaxy_requirements"
+    image: *ansible_image
+    commands:
+      - ansible-galaxy install -r requirements.yml
+
+  - name: "ansible_lint"
+    image: *ansible_image
+    commands:
+      - ansible-lint --offline
+
+  - name: "ansible_playbook_execution"
+    image: *ansible_image
+    commands:
+      - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
