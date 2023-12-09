@@ -2,7 +2,7 @@
 collections:
   # Our Collections
   - name: jchristianh.basos
-    source: https://github.com/jchristianh-ansible-collections/baseos.git
+    source: https://gitea.thezengarden.net/ansible_collections/ansible-collection-baseos.git
     type: git
     version: main
 
