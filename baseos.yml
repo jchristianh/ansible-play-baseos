@@ -1,5 +1,5 @@
 ---
-- name: Deploy a standardized base configuration
+- name: Deploy a standardized base configuration to target hosts
   hosts: all
   become: true
   gather_facts: true
