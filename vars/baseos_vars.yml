@@ -1,13 +1,13 @@
 ---
 __baseos_include_roles:
   - jchristianh.baseos.resolv_conf
-  - jchristianh.baseos.hostname
+  # - jchristianh.baseos.hostname
   - jchristianh.baseos.etc_hosts
   - jchristianh.baseos.bashrc
   - jchristianh.baseos.motd
   - jchristianh.baseos.update_all_packages
   - jchristianh.baseos.base_packages
-  - jchristianh.baseos.snmpd_conf
+  # - jchristianh.baseos.snmpd_conf
 
 
 ...
