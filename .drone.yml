@@ -4,7 +4,7 @@ type: docker
 name: run_ansible_tests_centos9
 
 global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/centos9:release-34"
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/centos9:release"
   ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
   ansible_playbook  : &ansible_playbook  "baseos.yml"
 
@@ -48,7 +48,7 @@ type: docker
 name: run_ansible_tests_fedora39
 
 global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/fedora39:release-34"
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/fedora39:release"
   ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
   ansible_playbook  : &ansible_playbook  "baseos.yml"
 
@@ -92,7 +92,7 @@ type: docker
 name: run_ansible_tests_debian11
 
 global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian11:release-34"
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian11:release"
   ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
   ansible_playbook  : &ansible_playbook  "baseos.yml"
 
@@ -136,7 +136,7 @@ type: docker
 name: run_ansible_tests_debian12
 
 global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian12:release-34"
+  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian12:release"
   ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
   ansible_playbook  : &ansible_playbook  "baseos.yml"
 
