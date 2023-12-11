@@ -1,3 +1,4 @@
 inventory/*
 host_vars
 collections/ansible_collections/
+testing.yml
