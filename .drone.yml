@@ -1,5 +1,3 @@
-# CENTOS 9
-#########################
 ---
 kind: pipeline
 type: docker
@@ -39,8 +37,6 @@ steps:
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
-# FEDORA 39
-#########################
 ---
 kind: pipeline
 type: docker
@@ -80,8 +76,6 @@ steps:
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
-# DEBIAN 11
-#########################
 ---
 kind: pipeline
 type: docker
@@ -121,8 +115,6 @@ steps:
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
-# DEBIAN 12
-#########################
 ---
 kind: pipeline
 type: docker
