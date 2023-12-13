@@ -4,7 +4,7 @@ collections:
   - name: jchristianh.basos
     source: https://gitea.thezengarden.net/ansible_collections/ansible-collection-baseos.git
     type: git
-    version: main
+    version: testing
 
   # External Collections
   - name: community.general
