@@ -1,4 +1,4 @@
-name: Ansible Test
+name: Ansible Code Pipeline
 run-name: ${{ gitea.actor }} is tesing Ansible with Gitea Actions
 on: [push]
 
