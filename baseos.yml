@@ -1,5 +1,5 @@
 ---
-- name: Deploy a standardized base configuration to target hosts
+- name: Deploy a standardized configuration to target hosts
   hosts: all
   become: true
   gather_facts: true
@@ -10,12 +10,6 @@
 
 
   tasks:
-    - name: Debug ansible_virtualization_type
-      ansible.builtin.debug:
-        var: ansible_virtualization_type
-        verbosity: 1
-
-
     - name: Include relevant role(s)
       ansible.builtin.include_role:
         name: "{{ item }}"
