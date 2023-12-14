@@ -1,93 +1,16 @@
 name: Ansible Code Pipeline
 run-name: ${{ gitea.actor }} is tesing Ansible with Gitea Actions
-on: [push]
+on:
+  push:
+    branches:
+      - testing
 
 jobs:
-  # CENTOS 9
-  #########################
-  CentOS9-Ansible-Pipeline:
-    runs-on: ansible-dev-centos9
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      - name: Ansible Environment Verify
-        run: |
-          git log -1
-          ansible --version
-          ansible-lint --version
-
-      - name: Ansible Galaxy Requirements Install
-        run: |
-          ansible-galaxy install -r requirements.yml
-
-      - name: Run Ansible-Lint
-        run: |
-          ansible-lint --offline --exclude collections/ansible_collections --exclude .gitea
-
-      - name: Run Ansible-Playbook
-        run: |
-          ansible-playbook -v -i 127.0.0.1, --connection=local baseos.yml
-
-
-  # FEDORA 39
-  #########################
-  Fedora39-Ansible-Pipeline:
-    runs-on: ansible-dev-fedora39
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      - name: Ansible Environment Verify
-        run: |
-          git log -1
-          ansible --version
-          ansible-lint --version
-
-      - name: Ansible Galaxy Requirements Install
-        run: |
-          ansible-galaxy install -r requirements.yml
-
-      - name: Run Ansible-Lint
-        run: |
-          ansible-lint --offline --exclude collections/ansible_collections --exclude .gitea
-
-      - name: Run Ansible-Playbook
-        run: |
-          ansible-playbook -v -i 127.0.0.1, --connection=local baseos.yml
-
-
-  # DEBIAN 11
-  #########################
-  Debian11-Ansible-Pipeline:
-    runs-on: ansible-dev-debian11
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      - name: Ansible Environment Verify
-        run: |
-          git log -1
-          ansible --version
-          ansible-lint --version
-
-      - name: Ansible Galaxy Requirements Install
-        run: |
-          ansible-galaxy install -r requirements.yml
-
-      - name: Run Ansible-Lint
-        run: |
-          ansible-lint --offline --exclude collections/ansible_collections --exclude .gitea
-
-      - name: Run Ansible-Playbook
-        run: |
-          ansible-playbook -v -i 127.0.0.1, --connection=local baseos.yml
-
-
-  # DEBIAN 12
-  #########################
-  Debian12-Ansible-Pipeline:
-    runs-on: ansible-dev-debian12
+  Ansible-Development-Pipeline:
+    strategy:
+      matrix:
+        os: [ ansible-dev-centos9, ansible-dev-fedora39, ansible-dev-debian11, ansible-dev-debian12 ]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
