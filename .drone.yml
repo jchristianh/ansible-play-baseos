@@ -30,9 +30,9 @@ steps:
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - ansible-lint --offline \
-          --exclude collections/ansible_collections/ansible* \
-          --exclude collections/ansible_collections/community* \
-          --exclude .gitea
+        --exclude collections/ansible_collections/ansible* \
+        --exclude collections/ansible_collections/community* \
+        --exclude .gitea
 
   - name: "ansible_playbook_execution"
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
@@ -72,9 +72,9 @@ steps:
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - ansible-lint --offline \
-          --exclude collections/ansible_collections/ansible* \
-          --exclude collections/ansible_collections/community* \
-          --exclude .gitea
+        --exclude collections/ansible_collections/ansible* \
+        --exclude collections/ansible_collections/community* \
+        --exclude .gitea
 
   - name: "ansible_playbook_execution"
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
@@ -114,9 +114,9 @@ steps:
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - ansible-lint --offline \
-          --exclude collections/ansible_collections/ansible* \
-          --exclude collections/ansible_collections/community* \
-          --exclude .gitea
+        --exclude collections/ansible_collections/ansible* \
+        --exclude collections/ansible_collections/community* \
+        --exclude .gitea
 
   - name: "ansible_playbook_execution"
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
@@ -156,9 +156,9 @@ steps:
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - ansible-lint --offline \
-          --exclude collections/ansible_collections/ansible* \
-          --exclude collections/ansible_collections/community* \
-          --exclude .gitea
+        --exclude collections/ansible_collections/ansible* \
+        --exclude collections/ansible_collections/community* \
+        --exclude .gitea
 
   - name: "ansible_playbook_execution"
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
