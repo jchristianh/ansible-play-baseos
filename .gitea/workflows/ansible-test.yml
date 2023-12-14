@@ -1,5 +1,5 @@
 name: Ansible Code Pipeline
-run-name: ${{ gitea.actor }} is tesing Ansible with Gitea Actions
+run-name: ${{ gitea.actor }} is running Ansible Code Pipeline
 on:
   push:
     branches:
@@ -21,13 +21,16 @@ jobs:
           ansible --version
           ansible-lint --version
 
-      - name: Ansible Galaxy Requirements Install
+      - name: Install Ansible Galaxy Dependencies
         run: |
           ansible-galaxy install -r requirements.yml
 
       - name: Run Ansible-Lint
         run: |
-          ansible-lint --offline --exclude collections/ansible_collections --exclude .gitea
+          ansible-lint --offline \
+            --exclude collections/ansible_collections/ansible* \
+            --exclude collections/ansible_collections/community* \
+            --exclude .gitea
 
       - name: Run Ansible-Playbook
         run: |
