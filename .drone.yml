@@ -10,7 +10,7 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
+  - name: ansible_environment_verify
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - . ./.drone.env
@@ -19,18 +19,18 @@ steps:
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
+  - name: ansible_galaxy_requirements
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
+  - name: ansible_lint
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - . ./.drone.env
       - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
+  - name: ansible_playbook_execution
     image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - . ./.drone.env
@@ -49,7 +49,7 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
+  - name: ansible_environment_verify
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - . ./.drone.env
@@ -58,18 +58,18 @@ steps:
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
+  - name: ansible_galaxy_requirements
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
+  - name: ansible_lint
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - . ./.drone.env
       - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
+  - name: ansible_playbook_execution
     image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - . ./.drone.env
@@ -88,7 +88,7 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
+  - name: ansible_environment_verify
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - . ./.drone.env
@@ -97,18 +97,18 @@ steps:
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
+  - name: ansible_galaxy_requirements
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
+  - name: ansible_lint
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - . ./.drone.env
       - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
+  - name: ansible_playbook_execution
     image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - . ./.drone.env
@@ -127,7 +127,7 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
+  - name: ansible_environment_verify
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - . ./.drone.env
@@ -136,18 +136,18 @@ steps:
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
+  - name: ansible_galaxy_requirements
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
+  - name: ansible_lint
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - . ./.drone.env
       - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
+  - name: ansible_playbook_execution
     image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - . ./.drone.env
