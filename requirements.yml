@@ -6,7 +6,7 @@ collections:
     type: git
     version: testing
 
-  # External Collections
+  # Galaxy Collections
   - name: community.general
   - name: ansible.posix
 
