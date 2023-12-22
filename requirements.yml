@@ -1,6 +1,6 @@
 ---
 collections:
-  # Our Collections
+  # Local Collections
   - name: jchristianh.basos
     source: https://gitea.thezengarden.net/ansible_collections/ansible-collection-baseos.git
     type: git
