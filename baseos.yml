@@ -13,7 +13,7 @@
     - name: Include defined role(s)
       ansible.builtin.include_role:
         name: "{{ item }}"
-      loop: "{{ __baseos_include_roles }}"
+      loop: "{{ baseos_include_roles }}"
 
 
 ...
