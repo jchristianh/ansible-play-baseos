@@ -1,16 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: run_ansible_tests_centos9
-
-global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/centos9:release-34"
-  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
-  ansible_playbook  : &ansible_playbook  "baseos.yml"
-
-environment:
-  ANSIBLE_INVENTORY    : *ansible_inventory
-  ANSIBLE_PLAYBOOK     : *ansible_playbook
+name: CentOS_9-Ansible-Pipeline
 
 trigger:
   branch:
@@ -19,42 +10,37 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
-    image: *ansible_image
+  - name: ansible_environment_verify
+    image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
+      - . ./.drone.env
+      - env
       - git log -1
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
-    image: *ansible_image
+  - name: ansible_galaxy_requirements
+    image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
-    image: *ansible_image
+  - name: ansible_lint
+    image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
-      - ansible-lint --offline
+      - . ./.drone.env
+      - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
-    image: *ansible_image
+  - name: ansible_playbook_execution
+    image: gitea.thezengarden.net/podman/ansible-dev/centos9:release
     commands:
+      - . ./.drone.env
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
 ---
 kind: pipeline
 type: docker
-name: run_ansible_tests_fedora39
-
-global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/fedora39:release-34"
-  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
-  ansible_playbook  : &ansible_playbook  "baseos.yml"
-
-environment:
-  ANSIBLE_INVENTORY    : *ansible_inventory
-  ANSIBLE_PLAYBOOK     : *ansible_playbook
+name: Fedora_39-Ansible-Pipeline
 
 trigger:
   branch:
@@ -63,42 +49,37 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
-    image: *ansible_image
+  - name: ansible_environment_verify
+    image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
+      - . ./.drone.env
+      - env
       - git log -1
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
-    image: *ansible_image
+  - name: ansible_galaxy_requirements
+    image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
-    image: *ansible_image
+  - name: ansible_lint
+    image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
-      - ansible-lint --offline
+      - . ./.drone.env
+      - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
-    image: *ansible_image
+  - name: ansible_playbook_execution
+    image: gitea.thezengarden.net/podman/ansible-dev/fedora39:release
     commands:
+      - . ./.drone.env
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
 ---
 kind: pipeline
 type: docker
-name: run_ansible_tests_debian11
-
-global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian11:release-34"
-  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
-  ansible_playbook  : &ansible_playbook  "baseos.yml"
-
-environment:
-  ANSIBLE_INVENTORY    : *ansible_inventory
-  ANSIBLE_PLAYBOOK     : *ansible_playbook
+name: Debian_11-Ansible-Pipeline
 
 trigger:
   branch:
@@ -107,42 +88,37 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
-    image: *ansible_image
+  - name: ansible_environment_verify
+    image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
+      - . ./.drone.env
+      - env
       - git log -1
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
-    image: *ansible_image
+  - name: ansible_galaxy_requirements
+    image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
-    image: *ansible_image
+  - name: ansible_lint
+    image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
-      - ansible-lint --offline
+      - . ./.drone.env
+      - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
-    image: *ansible_image
+  - name: ansible_playbook_execution
+    image: gitea.thezengarden.net/podman/ansible-dev/debian11:release
     commands:
+      - . ./.drone.env
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
 
 
 ---
 kind: pipeline
 type: docker
-name: run_ansible_tests_debian12
-
-global-variables:
-  ansible_image     : &ansible_image     "gitea.thezengarden.net/podman/ansible-dev/debian12:release-34"
-  ansible_inventory : &ansible_inventory "-i 127.0.0.1, --connection=local"
-  ansible_playbook  : &ansible_playbook  "baseos.yml"
-
-environment:
-  ANSIBLE_INVENTORY    : *ansible_inventory
-  ANSIBLE_PLAYBOOK     : *ansible_playbook
+name: Debian_12-Ansible-Pipeline
 
 trigger:
   branch:
@@ -151,24 +127,28 @@ trigger:
   event: [push]
 
 steps:
-  - name: "ansible_environment_verify"
-    image: *ansible_image
+  - name: ansible_environment_verify
+    image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
+      - . ./.drone.env
+      - env
       - git log -1
       - ansible --version
       - ansible-lint --version
 
-  - name: "ansible_galaxy_requirements"
-    image: *ansible_image
+  - name: ansible_galaxy_requirements
+    image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
       - ansible-galaxy install -r requirements.yml
 
-  - name: "ansible_lint"
-    image: *ansible_image
+  - name: ansible_lint
+    image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
-      - ansible-lint --offline
+      - . ./.drone.env
+      - ansible-lint --offline $ANSIBLE_LINT_EXCLUSION
 
-  - name: "ansible_playbook_execution"
-    image: *ansible_image
+  - name: ansible_playbook_execution
+    image: gitea.thezengarden.net/podman/ansible-dev/debian12:release
     commands:
+      - . ./.drone.env
       - ansible-playbook -v $ANSIBLE_INVENTORY $ANSIBLE_PLAYBOOK
