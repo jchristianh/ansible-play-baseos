@@ -11,7 +11,7 @@
 
   tasks:
     - name: Include defined role(s)
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: "{{ item }}"
       loop: "{{ baseos_include_roles }}"
 
