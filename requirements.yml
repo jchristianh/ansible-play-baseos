@@ -4,7 +4,7 @@ collections:
   - name: jchristianh.baseos
     source: https://gitea.thezengarden.net/ansible_collections/ansible-collection-baseos.git
     type: git
-    version: 1.0.27
+    version: 1.0.28
 
   # Galaxy Collections
   - name: community.general

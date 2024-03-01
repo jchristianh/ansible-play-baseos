@@ -5,10 +5,8 @@ baseos_include_roles:
   - jchristianh.baseos.etc_hosts
   - jchristianh.baseos.bashrc
   - jchristianh.baseos.motd
-  - jchristianh.baseos.node_status
   - jchristianh.baseos.update_all_packages
   - jchristianh.baseos.base_packages
   - jchristianh.baseos.snmpd_conf
-  - jchristianh.baseos.node_status
 
 ...
