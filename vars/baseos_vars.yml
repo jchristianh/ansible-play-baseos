@@ -2,6 +2,7 @@
 baseos_include_roles:
   - jchristianh.baseos.resolv_conf
   - jchristianh.baseos.hostname
+  - jchristianh.baseos.dnf_conf
   - jchristianh.baseos.etc_hosts
   - jchristianh.baseos.bashrc
   - jchristianh.baseos.motd
